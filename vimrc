@@ -9,7 +9,6 @@ Bundle 'bling/vim-airline'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/nerdtree'
 Bundle 'luochen1990/rainbow'
-Bundle 'Valloric/YouCompleteMe'
 
 call vundle#end()
 
