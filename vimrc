@@ -2,9 +2,9 @@
 " Vundle Config
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Bundle 'Vundlevim/Vundle.vim'
 Bundle 'bling/vim-airline'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/nerdtree'
