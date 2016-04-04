@@ -45,3 +45,21 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '⤞'
 let g:NERDTreeDirArrowCollapsible = '⤥'
+
+""" vim trickery!
+
+"" With a map leader it's possible to do extra key combinations
+" " like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
+" " Fast saving
+nmap <leader>w :w!<cr>
+
+" " Fast editing of the .vimrc
+map <leader>e :e! ~/.vimrc<cr>
+
+" " When vimrc is edited, reload it
+autocmd! bufwritepost vimrc source ~/.vimrc
+
+""" !vim trickery
