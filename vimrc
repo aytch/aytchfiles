@@ -8,6 +8,7 @@ Bundle 'Vundlevim/Vundle.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 Bundle 'luochen1990/rainbow'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
@@ -52,6 +53,9 @@ map <leader>e :e! ~/.vimrc<cr>
 " " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vimrc
 
+" " When a ruby file is edited, validate syntax
+autocmd! bufwritepost ruby ruby -c
+
 """ !vim trickery
 
 " airline config
@@ -93,40 +97,13 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-" Use case insensitive search, except when using capital letters
-set ignorecase
-set smartcase
+" Syntastic
 
-" Display line numbers on the left
-" set number
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" airline config
-let g:airline_powerline_fonts = 0
-let g:airline_theme='molokai'
-set laststatus=2
-
-" NERDtree config
-map <C-n> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let g:NERDTreeDirArrows = 1
-let g:NERDTreeDirArrowExpandable = '⤞'
-let g:NERDTreeDirArrowCollapsible = '⤥'
-
-""" vim trickery!
-
-"" With a map leader it's possible to do extra key combinations
-" " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
-
-" " Fast saving
-nmap <leader>w :w!<cr>
-
-" " Fast editing of the .vimrc
-map <leader>e :e! ~/.vimrc<cr>
-
-" " When vimrc is edited, reload it
-autocmd! bufwritepost vimrc source ~/.vimrc
-
-""" !vim trickery
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
