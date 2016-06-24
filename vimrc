@@ -58,8 +58,16 @@ autocmd! bufwritepost ruby ruby -c
 
 """ !vim trickery
 
+" better splits
+set splitbelow
+set splitright
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " airline config
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 let g:airline_theme='molokai'
 set laststatus=2
 
