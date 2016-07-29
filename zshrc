@@ -8,3 +8,8 @@ alias reload='zr'
 
 # git
 alias gpo='git pull origin'
+
+#misc
+alias cls='clear'
+alias scrl='screen -ls'
+alias scra='screen -RDa'
