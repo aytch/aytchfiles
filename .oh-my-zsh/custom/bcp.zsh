@@ -10,13 +10,16 @@ alias ze='vim ~/.zshrc'
 alias zr='source ~/.zshrc'
 alias reload='zr'
 
-# # git
+# git
 alias gpo='git pull origin'
 alias gc='git checkout'
-# # rbenv
-#
-# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+alias gb='git branch'
 
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# derpy windows old habit
 alias cls='clear'
 # remap man for colorized output
 man() {
