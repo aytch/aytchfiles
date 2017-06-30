@@ -1,8 +1,52 @@
+" TIPS & TRICKS
+"
+" Useful insert mode commands:
+"   Ctrl-o       for one time normal mode command (zz being most useful)
+"   Ctrl-r<reg>  for insertion from a named register
+"   Ctrl-b       delete backward a word
+"   Ctrl-r=      expression register (eg 43 + 44 --> 87)
+"
+" Useful cursor positioning and movement commands:
+"   zt      move text under cursor to the top
+"   zz      move text under cursor to the center
+"   zb      move text under cursor to the bottom
+"   zl      move text under cursor one character to the left
+"   zL      move text under cursor half a screen to the left
+"   H       move to top of screen
+"   M       move to middle of screen
+"   L       move to end of screen
+"   g;      move back to where you were last editing
+"   mm      set a mark in the current file
+"   'm      return back to 'm' mark in the current file
+"   mM      set a global mark
+"   'M      return back to the global 'M' mark
+"   {/}     move between paragraphs
+"   (/)     move between sentences
+"   ge/gE   move to the end of the previous word/WORD
+"   Ctrl-e  scroll file up one line at a time
+"   Ctrl-y  scroll file down one line at a time
+
+" Visual mode commands:
+"   gv           repeat last visual selection
+"   u/U          change visual selection to lower or upper case
+"   vip/vap      visual select paragraph
+"   vis/vas      visual select sentence
+"   vit/vat      visual select tag
+"   :'<,'>!sort  sort visual selection
+"   :'<,'>!uniq  uniq visual selection
+"   gx           open link in a browser
+
+"   % vim $(find **/*.txt)  edit all txt files from the current path down
+"   % vim $(ag -l foo)      edit all files that contain foo
+
+" /TIPS & TRICKS
+
 " Source $ADMIN_SCRIPTS/master.vimrc
 " Vundle Config
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/local/bin/fzf
 call vundle#begin()
 Bundle 'Vundlevim/Vundle.vim'
 Bundle 'Raimondi/delimitMate'
@@ -10,10 +54,14 @@ Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'luochen1990/rainbow'
+Bundle 'vim-ruby/vim-ruby'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
 Plugin 'kien/rainbow_parentheses.vim'
-
+Bundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Bundle 'junegunn/fzf.vim'
+" Bundle 'jreybert/vimagit'
 call vundle#end()
 
 " Enable syntax highlighting
@@ -24,8 +72,12 @@ syntax on
 " and for plugins that are filetype specific.
 filetype indent plugin on
 
+autocmd FileType * set autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2
 " Show partial commands in the last line of the screen
 set showcmd
+
+" Keep 3 lines visible when scrolling
+set scrolloff=5
 
 " Better command-line completion
 set wildmenu
@@ -52,9 +104,6 @@ map <leader>e :e! ~/.vimrc<cr>
 
 " " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vimrc
-
-" " When a ruby file is edited, validate syntax
-autocmd! bufwritepost ruby ruby -c
 
 """ !vim trickery
 
