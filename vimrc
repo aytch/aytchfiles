@@ -61,7 +61,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'kien/rainbow_parentheses.vim'
 Bundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Bundle 'junegunn/fzf.vim'
-" Bundle 'jreybert/vimagit'
+Bundle 'jreybert/vimagit'
 call vundle#end()
 
 " Enable syntax highlighting
@@ -102,6 +102,10 @@ nmap <leader>w :w!<cr>
 " " Fast editing of the .vimrc
 map <leader>e :e! ~/.vimrc<cr>
 
+" " Fast access to fzf+ag
+map <leader>a :Ag<cr>
+map <leader>f :Files<cr>
+
 " " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vimrc
 
@@ -123,7 +127,8 @@ set laststatus=2
 " NERDtree config
 map <C-n> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" " Open NERDTree at Vim open if no file argument is given
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '⤞'
 let g:NERDTreeDirArrowCollapsible = '⤥'
@@ -160,7 +165,9 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height=4
