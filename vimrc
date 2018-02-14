@@ -72,7 +72,7 @@ syntax on
 " and for plugins that are filetype specific.
 filetype indent plugin on
 
-autocmd FileType * set autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2
+autocmd FileType * set autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2 listchars=tab:␉·
 " Show partial commands in the last line of the screen
 set showcmd
 
