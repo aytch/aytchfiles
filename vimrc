@@ -46,17 +46,15 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=/usr/local/bin/fzf
+set rtp+=/usr/local/opt/fzf
 call vundle#begin()
 Bundle 'Vundlevim/Vundle.vim'
+Plugin 'flazz/vim-colorschemes'
 Bundle 'Raimondi/delimitMate'
 Bundle 'bling/vim-airline'
-Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'luochen1990/rainbow'
-Bundle 'vim-ruby/vim-ruby'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'kien/rainbow_parentheses.vim'
 Bundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -124,15 +122,6 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='molokai'
 set laststatus=2
 
-" NERDtree config
-map <C-n> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-" " Open NERDTree at Vim open if no file argument is given
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let g:NERDTreeDirArrows = 1
-let g:NERDTreeDirArrowExpandable = '⤞'
-let g:NERDTreeDirArrowCollapsible = '⤥'
-
 " Rainbow Parentheses
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
@@ -168,6 +157,6 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height=4
